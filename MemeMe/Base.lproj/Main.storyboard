@@ -10,7 +10,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -43,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="jVc-3L-25Y">
-                                        <barButtonItem key="leftBarButtonItem" title="Share" id="4qX-1T-gXH">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="4qX-1T-gXH">
                                             <connections>
                                                 <action selector="shareMeme:" destination="BYZ-38-t0r" id="68H-Kh-MDC"/>
                                             </connections>
@@ -93,6 +92,7 @@
                         <outlet property="topText" destination="vAQ-B9-Qa3" id="WLC-Yq-OZ9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="113.79310344827587"/>
         </scene>
