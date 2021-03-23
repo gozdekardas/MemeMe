@@ -19,16 +19,6 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     @IBOutlet weak var bottomText: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    
-    // MARK: meme struct
-    struct Meme{
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
-    
     // MARK: MEME text attributes
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -46,16 +36,18 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
         self.topText.delegate = self.textDelegate
         self.bottomText.delegate = self.textDelegate
         
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        topText.text = "TOP"
+        configureTextField(topText , with :  "TOP")
+        configureTextField(bottomText , with :  "BOTTOM")
         
-        bottomText.text = "BOTTOM"
         topText.defaultTextAttributes = memeTextAttributes
         bottomText.defaultTextAttributes = memeTextAttributes
-        topText.textAlignment = NSTextAlignment.center
         
-        bottomText.textAlignment = .center
-        shareButton.isEnabled = false
+        topText.textAlignment = NSTextAlignment.center
+        bottomText.textAlignment = NSTextAlignment.center
+        
+        enableOrDisableButton(cameraButton, isEnabled : UIImagePickerController.isSourceTypeAvailable(.camera))        
+        enableOrDisableButton(shareButton, isEnabled : false)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,10 +100,11 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     // MARK:cancel meme
     @IBAction func cancel(_ sender: Any) {
         imagePickerView.image = nil
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
+        configureTextField(topText , with :  "TOP")
+        configureTextField(bottomText , with :  "BOTTOM")
         
-        shareButton.isEnabled = false
+        enableOrDisableButton(shareButton, isEnabled : false)
+
     }
     
     // MARK: share meme
@@ -129,30 +122,23 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
             self.saveMeme()
             self.dismiss(animated: true, completion: nil)
         }
-        
-        
     }
     
-    
     @IBAction func pickAnImage(_ sender: Any) {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController,animated: true, completion: nil)
-        
+        pickAnImage(from: .photoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .camera
-        present(pickerController,animated: true, completion: nil)
-        
-        
+        pickAnImage(from: .camera)
     }
     
-    
+    func pickAnImage(from source: UIImagePickerController.SourceType)
+    {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        present(pickerController,animated: true, completion: nil)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage{
@@ -160,7 +146,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
         }
         dismiss(animated: true, completion: nil)
         
-        shareButton.isEnabled = true
+        enableOrDisableButton(shareButton, isEnabled : true)
     }
     
     
@@ -174,9 +160,8 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     // MARK: generate meme image
     func generateMemedImage() -> UIImage {
         
-        //hide toolbar and navbar
-        toolBar.isHidden = true
-        navBar.isHidden = true
+        
+        hideOrUnhideBar(isHidden : true)
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -185,10 +170,25 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
         UIGraphicsEndImageContext()
         
         //unhide toolbar and navbar
-        toolBar.isHidden = false
-        navBar.isHidden = false
+        hideOrUnhideBar(isHidden : false)
 
         return memedImage
+    }
+    
+    //MARK: hide unhide toolbar and navbar
+    func hideOrUnhideBar( isHidden : Bool){
+        toolBar.isHidden = isHidden
+        navBar.isHidden = isHidden
+    }
+    
+    func enableOrDisableButton( _ button : UIBarButtonItem , isEnabled : Bool){
+        button.isEnabled = isEnabled
+    }
+    
+    
+    func configureTextField(_ textField : UITextField, with defaultText: String)
+    {
+        textField.text =  defaultText
     }
     
 }
