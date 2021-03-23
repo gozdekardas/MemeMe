@@ -33,17 +33,8 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.topText.delegate = self.textDelegate
-        self.bottomText.delegate = self.textDelegate
-        
         configureTextField(topText , with :  "TOP")
         configureTextField(bottomText , with :  "BOTTOM")
-        
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        
-        topText.textAlignment = NSTextAlignment.center
-        bottomText.textAlignment = NSTextAlignment.center
         
         enableOrDisableButton(cameraButton, isEnabled : UIImagePickerController.isSourceTypeAvailable(.camera))        
         enableOrDisableButton(shareButton, isEnabled : false)
@@ -185,10 +176,13 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
         button.isEnabled = isEnabled
     }
     
-    
+    // MARK: configure text fields
     func configureTextField(_ textField : UITextField, with defaultText: String)
     {
+        topText.delegate = textDelegate
         textField.text =  defaultText
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = NSTextAlignment.center
     }
     
 }
