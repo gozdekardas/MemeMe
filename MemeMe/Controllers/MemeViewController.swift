@@ -144,7 +144,9 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     // MARK: save meme
     func saveMeme() {
             // Create the meme
-           let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
     }
     
     
