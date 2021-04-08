@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class MemeViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
 
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -95,7 +95,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
         configureTextField(bottomText , with :  "BOTTOM")
         
         enableOrDisableButton(shareButton, isEnabled : false)
-
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: share meme
@@ -112,6 +112,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
             }
             self.saveMeme()
             self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     

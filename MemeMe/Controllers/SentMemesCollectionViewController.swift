@@ -10,48 +10,58 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    let memes = (UIApplication.shared.delegate as! AppDelegate).memes
+    var memes: [Meme]!{
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2*space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        
+    }
     
- /*   override func viewWillAppear(_ animated: Bool) {
+    // MARK: Open Create Meme Page
+    @IBAction func openCreateMeme(_ sender: Any) {
+        
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
+        self.navigationController!.pushViewController(detailController, animated: true)
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-    }*/
+        self.collectionView!.reloadData()
+        print(self.memes.count)
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(memes.count)
         return self.memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SentMemesCollectionViewCell", for:   indexPath) as! SentMemesCollectionViewCell
-        
         let meme = self.memes[(indexPath as NSIndexPath).row]
-        
         cell.memeImageView.image = meme.memedImage
-        
         return cell
     }
     
-   
-    
-  /*  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
-        
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "VillainDetailViewController") as! VillainDetailViewController
-        detailController.villain = self.allVillains[(indexPath as NSIndexPath).row]
-        self.navigationController!.pushViewController(detailController, animated: true)
-        
-    }*/
-    
 }
 
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
