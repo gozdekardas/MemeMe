@@ -18,6 +18,7 @@
 		B54560DF25FF94C100BF278A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54560DD25FF94C100BF278A /* LaunchScreen.storyboard */; };
 		B54560E72608DE6200BF278A /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54560E62608DE6200BF278A /* TextFieldDelegate.swift */; };
 		B54560E9260A09E500BF278A /* MemeModelStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54560E8260A09E500BF278A /* MemeModelStruct.swift */; };
+		B5564ECC261F76EC00D2C32E /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5564ECB261F76EC00D2C32E /* MemeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B54560E025FF94C100BF278A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54560E62608DE6200BF278A /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		B54560E8260A09E500BF278A /* MemeModelStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeModelStruct.swift; sourceTree = "<group>"; };
+		B5564ECB261F76EC00D2C32E /* MemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				B503DE0A2614967A009ABB25 /* SentMemesCollectionViewController.swift */,
 				B503DE0C2614B080009ABB25 /* SentMemesCollectionViewCell.swift */,
 				B5015A3E261EDF170022B5BE /* SentMemesTableViewController.swift */,
+				B5564ECB261F76EC00D2C32E /* MemeDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5564ECC261F76EC00D2C32E /* MemeDetailViewController.swift in Sources */,
 				B54560D725FF94B800BF278A /* MemeViewController.swift in Sources */,
 				B5015A3F261EDF170022B5BE /* SentMemesTableViewController.swift in Sources */,
 				B54560D325FF94B800BF278A /* AppDelegate.swift in Sources */,

@@ -33,9 +33,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
     // MARK: Open Create Meme Page
     @IBAction func openCreateMeme(_ sender: Any) {
         
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
-        self.navigationController!.pushViewController(detailController, animated: true)
-        
+        let memeViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
+        self.present(memeViewController, animated: true, completion: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +53,15 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         cell.memeImageView.image = meme.memedImage
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.image
+            = self.memes[(indexPath as NSIndexPath).row].memedImage
+        self.navigationController!.pushViewController(detailController, animated: true)
+        
     }
     
 }

@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="-492"/>
+            <point key="canvasLocation" x="698" y="-833"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="Zad-iI-Qmu">
@@ -229,6 +229,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKY-Nm-esb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-332" y="-163"/>
+        </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="K53-i4-l2s">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="T5l-aj-gvd" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Dz-NX-5JK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-Pi-BHG">
+                                <rect key="frame" x="67" y="136" width="240" height="311"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="311" id="0jW-yE-ndf"/>
+                                    <constraint firstAttribute="width" constant="240" id="HJE-al-vwS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NZO-Wi-Yrm" firstAttribute="trailing" secondItem="cQC-Pi-BHG" secondAttribute="trailing" constant="68" id="00c-kR-ldt"/>
+                            <constraint firstItem="NZO-Wi-Yrm" firstAttribute="bottom" secondItem="cQC-Pi-BHG" secondAttribute="bottom" constant="220" id="BZ5-Hy-EbZ"/>
+                            <constraint firstItem="cQC-Pi-BHG" firstAttribute="top" secondItem="NZO-Wi-Yrm" secondAttribute="top" constant="136" id="EtZ-DA-6bO"/>
+                            <constraint firstItem="cQC-Pi-BHG" firstAttribute="leading" secondItem="NZO-Wi-Yrm" secondAttribute="leading" constant="67" id="cEU-x7-NHO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NZO-Wi-Yrm"/>
+                    </view>
+                    <connections>
+                        <outlet property="memeImage" destination="cQC-Pi-BHG" id="mIy-W6-JfS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1o-38-vxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="-156.07196401799101"/>
         </scene>
         <!--Table-->
         <scene sceneID="gT5-kL-cl7">
